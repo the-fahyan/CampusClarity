@@ -18,13 +18,18 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     except Exception:  # pragma: no cover
         pass
 
-from backend.config import PLACEHOLDER_KEY, Settings  # noqa: E402
+from backend.config import PLACEHOLDER_KEY, ConfigError, Settings  # noqa: E402
 from backend.generator import Generator, UpstreamError  # noqa: E402
 from backend.retrieval import Passage  # noqa: E402
 
 
 def main() -> int:
-    settings = Settings(MOCK_LLM=False)  # type: ignore[call-arg]
+    try:
+        settings = Settings(MOCK_LLM=False)  # type: ignore[call-arg]
+    except ConfigError as exc:
+        print(f"ERROR: {exc}")
+        print("No real key is present. Put a real GEMINI_API_KEY in .env (never commit it).")
+        return 1
     if not settings.GEMINI_API_KEY or settings.GEMINI_API_KEY == PLACEHOLDER_KEY:
         print("ERROR: GEMINI_API_KEY is not set (put a real key in .env). No key is fabricated.")
         return 1
