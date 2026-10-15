@@ -264,7 +264,7 @@ Constraints: trimmed non-empty, length 3–500 (`FR-01/02`).
       "is_sample": false
     }
   ],
-  "retrieval": { "top_score": 11.42, "threshold": 4.0, "passages_considered": 5 },
+  "retrieval": { "top_score": 11.42, "threshold": 10.5, "passages_considered": 5 },
   "model": { "name": "gemma-3-27b-it", "provider": "Google AI Studio (Gemini API)", "mode": "live" },
   "latency_ms": 2310
 }
@@ -330,7 +330,7 @@ async def handle_ask(req: AskRequest) -> AskResponse:
 | `GEMINI_API_KEY` | — (required unless mock) | API key; startup fails fast with named error if missing and `MOCK_LLM` false (FR-18) |
 | `GEMMA_MODEL_ID` | `gemma-3-27b-it` | Primary model — **verify availability in Phase 3** |
 | `GEMMA_FALLBACK_MODEL_ID` | `gemma-3-12b-it` | Fallback on 429/5xx/timeout (NFR-02) |
-| `BM25_MIN_SCORE` | `4.0` | Abstention layer-1 threshold — calibrated in Phase 6 |
+| `BM25_MIN_SCORE` | `10.5` | Abstention layer-1 threshold — calibrated in Phase 6 (`docs/DECISIONS.md`); original placeholder was `4.0` |
 | `BM25_TOP_K` | `5` | Passages into prompt |
 | `RATE_LIMIT_PER_MINUTE` | `60` | Per-IP window (FR-19) |
 | `MOCK_LLM` | `false` | Canned deterministic responses (FR-21) |

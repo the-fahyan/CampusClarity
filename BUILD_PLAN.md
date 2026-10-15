@@ -21,15 +21,15 @@
 
 | Phase | Title | Status | Evidence (command output / report link) |
 |---|---|---|---|
-| 0 | Scaffold & environment | ⬜ not started | |
-| 1 | Knowledge base ingestion | ⬜ not started | |
-| 2 | Retrieval service (BM25 + gate) | ⬜ not started | |
-| 3 | AI integration (Gemma, citations, refusal v2) | ⬜ not started | |
-| 4 | API layer (routes, limits, errors, logging) | ⬜ not started | |
-| 5 | Frontend chat UI | ⬜ not started | |
-| 6 | End-to-end QA & threshold calibration | ⬜ not started | |
-| 7 | Open-source polish & demo readiness | ⬜ not started | |
-| 8 | Stretch (optional) | ⬜ not started | |
+| 0 | Scaffold & environment | ✅ done | `pytest -q` green; `Settings().model_fields.keys()` incl. `GEMINI_API_KEY`; scaffold + docs committed (`688bfb5` + Phase commits) |
+| 1 | Knowledge base ingestion | ✅ done | `scripts/ingest.py` → `chunks=743 duplicates_removed=66 samples=0 pages_seen=145` |
+| 2 | Retrieval service (BM25 + gate) | ✅ done | `search_cli.py` hostel-fee top_score 34.0; tests green; threshold calibrated to 10.5 (`docs/DECISIONS.md`) |
+| 3 | AI integration (Gemma, citations, refusal v2) | ✅ done (mock) / live pending key | `tests/test_generator.py` green; `smoke_gemma.py` needs a real key |
+| 4 | API layer (routes, limits, errors, logging) | ✅ done | `/api/ask` answered+refusal, 422/429/502/503, health/sources verified (tests + live curl) |
+| 5 | Frontend chat UI | ✅ done | states, chips, drawer, disclaimer verified in-browser at 1088/360 px |
+| 6 | End-to-end QA & threshold calibration | ✅ done (mock) / live pending key | `run_battery.py`: SC-01 8/10, SC-02 5/5, SC-03 100%, SC-04 pass (mock) |
+| 7 | Open-source polish & demo readiness | ✅ done | `README.md`, `LICENSE`, `tests/manual_ui_checklist.md`, license audit table |
+| 8 | Stretch (optional) | ⬜ deferred | Dockerfile / extra sources / deploy — not built (optional) |
 
 ---
 
