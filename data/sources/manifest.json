@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "source_id": "prospectus",
+      "title": "Integral University Prospectus",
+      "file": "prospectus.txt",
+      "type": "prospectus",
+      "verified": true,
+      "is_sample": false,
+      "notes": "Text extracted from the team-provided official PDF (145 pages). Edition year TBC — do not state a year until confirmed (PRD A-02).",
+      "added_on": "2026-10-16"
+    }
+  ]
+}
