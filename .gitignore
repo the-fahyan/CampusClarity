@@ -1,0 +1,19 @@
+# Secrets — never commit (AGENTS §7, FR-18)
+.env
+
+# Generated artifacts (AGENTS §4 — never commit)
+index/
+
+# Virtual environments
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
