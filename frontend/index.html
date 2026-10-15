@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="CampusMate AI — an independent, source-grounded campus question answering assistant (prototype)." />
+    <title>CampusMate AI — Your Campus. Your Answers.</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#composer">Skip to the question box</a>
+
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">CM</span>
+        <div class="brand__text">
+          <h1 class="brand__name">CampusMate AI</h1>
+          <p class="brand__tagline">Your Campus. Your Answers.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <p class="status" id="status" aria-live="polite">
+          <span class="status__dot" id="status-dot" data-state="unknown" aria-hidden="true"></span>
+          <span class="status__label" id="status-label">Checking…</span>
+        </p>
+        <button type="button" class="btn btn--ghost" id="sources-toggle" aria-haspopup="dialog" aria-controls="sources-drawer" aria-expanded="false">
+          Sources
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="log" id="message-log" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation">
+        <!-- Rendered by app.js -->
+      </section>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <label class="sr-only" for="question">Ask a question about the campus</label>
+        <div class="composer__row">
+          <textarea
+            id="question"
+            name="question"
+            rows="1"
+            maxlength="500"
+            placeholder="Ask about fees, hostels, admissions…"
+            aria-describedby="composer-hint"
+          ></textarea>
+          <button type="submit" class="btn btn--primary" id="send" aria-label="Send question">
+            <span class="send-label">Send</span>
+          </button>
+        </div>
+        <div class="composer__meta">
+          <p id="composer-hint" class="composer__hint">Enter to send · Shift+Enter for a new line</p>
+          <p id="char-count" class="composer__count" aria-hidden="true">0/500</p>
+        </div>
+        <p class="composer__error" id="composer-error" role="alert" hidden></p>
+      </form>
+    </main>
+
+    <aside class="drawer" id="sources-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+      <div class="drawer__head">
+        <h2 id="drawer-title">Knowledge sources</h2>
+        <button type="button" class="btn btn--ghost" id="drawer-close" aria-label="Close sources">✕</button>
+      </div>
+      <div class="drawer__body" id="drawer-body">
+        <p class="muted">Loading sources…</p>
+      </div>
+      <p class="drawer__note" id="drawer-howto"></p>
+    </aside>
+    <div class="drawer__scrim" id="drawer-scrim" hidden></div>
+
+    <footer class="app-footer">
+      <p>
+        CampusMate AI is an independent open-source project, not affiliated with or endorsed by
+        Integral University. Answers are informational and may be incomplete — always verify against
+        official university notifications.
+      </p>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
